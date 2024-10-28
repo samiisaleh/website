@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: sami-website-db-dev
+    environment:
+      POSTGRES_DB: sami_website
+      POSTGRES_USER: sami
+      POSTGRES_PASSWORD: password123
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres-dev:/var/lib/postgresql/data
+    networks:
+      - app-network-dev
+
+networks:
+  app-network-dev:
+    driver: bridge
